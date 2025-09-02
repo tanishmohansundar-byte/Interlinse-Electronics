@@ -7,25 +7,25 @@
     body {
       margin: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
-      background: #fff;
-      color: #111;
+      background: #001f3f; /* Dark Blue */
+      color: #fff;
       text-align: center;
     }
     nav {
-      background: #f5f5f7;
-      padding: 15px;
+      background: #012a5e;
+      padding: 20px;
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 50px;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
     }
     nav button {
       background: none;
       border: none;
       cursor: pointer;
-      color: #111;
-      font-size: 16px;
+      color: #ff9800;
+      font-size: 18px;
     }
     .screen {
       display: none;
@@ -40,65 +40,73 @@
       from {opacity: 0;}
       to {opacity: 1;}
     }
-    h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-size: 28px;
-      margin: 20px 0;
-    }
+    h1 { font-size: 48px; margin-bottom: 20px; }
+    h2 { font-size: 32px; margin: 20px 0; }
+    p { font-size: 18px; line-height: 1.6; max-width: 800px; margin: auto; }
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
     }
     .card {
-      border: 1px solid #ddd;
+      border: 1px solid #444;
       border-radius: 16px;
       padding: 20px;
       transition: transform 0.3s;
-      background: #fafafa;
+      background: #012a5e;
     }
-    .card:hover {
-      transform: scale(1.05);
-    }
+    .card:hover { transform: scale(1.05); }
     .card img {
       max-width: 100%;
       border-radius: 12px;
     }
     button.buy {
-      background: #0071e3;
+      background: #ff9800;
       border: none;
       padding: 12px 20px;
-      color: white;
+      color: #fff;
       border-radius: 8px;
       cursor: pointer;
       margin-top: 15px;
-      font-size: 14px;
+      font-size: 16px;
     }
-    button.buy:hover {
-      background: #005bb5;
+    button.buy:hover { background: #e68900; }
+    .form-box {
+      background: #012a5e;
+      padding: 25px;
+      border-radius: 12px;
+      display: inline-block;
+      text-align: left;
+      max-width: 500px;
+      margin: auto;
+    }
+    .form-box input, .form-box select, .form-box textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
     }
     .result-box {
       margin-top: 20px;
       padding: 20px;
-      background: #f5f5f7;
+      background: #012a5e;
       border-radius: 12px;
       display: inline-block;
     }
-    canvas {
-      margin-top: 15px;
-    }
+    canvas { margin-top: 15px; }
   </style>
 </head>
 <body>
 
   <nav>
     <button onclick="goToScreen('home')">Home</button>
-    <button onclick="goToScreen('phones')">Shop Phones</button>
+    <button onclick="goToScreen('phones')">Phones</button>
+    <button onclick="goToScreen('laptops')">Laptops</button>
+    <button onclick="goToScreen('ipads')">iPads</button>
     <button onclick="goToScreen('about')">About</button>
     <button onclick="goToScreen('contact')">Contact</button>
   </nav>
@@ -106,83 +114,177 @@
   <!-- Home -->
   <div id="home" class="screen active">
     <h1>Welcome to Interlinse Electronics</h1>
-    <p>Innovation meets elegance. Explore our latest smartphones crafted with precision.</p>
-    <button class="buy" onclick="goToScreen('phones')">Shop Now</button>
+    <p>Innovation meets elegance. Explore our latest smartphones, laptops, and tablets crafted with precision.</p>
+    <button class="buy" onclick="goToScreen('phones')">Start Shopping</button>
   </div>
 
   <!-- Phones -->
   <div id="phones" class="screen">
-    <h2>Our Latest Phones</h2>
+    <h2>Latest Phones</h2>
     <div class="products">
       <div class="card">
         <img src="https://via.placeholder.com/300x200?text=Nova+X1" alt="Nova X1">
         <h3>Interlinse Nova X1</h3>
         <p>₹59,999</p>
-        <button class="buy" onclick="buyPhone('Interlinse Nova X1','₹59,999')">Buy Now</button>
+        <button class="buy" onclick="showForm('Interlinse Nova X1','₹59,999')">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=FlipX+Fold" alt="FlipX Fold">
+        <h3>Interlinse FlipX Fold</h3>
+        <p>₹99,999</p>
+        <button class="buy" onclick="showForm('Interlinse FlipX Fold','₹99,999', true)">Buy Now</button>
       </div>
       <div class="card">
         <img src="https://via.placeholder.com/300x200?text=Aero+Z5" alt="Aero Z5">
         <h3>Interlinse Aero Z5</h3>
         <p>₹44,999</p>
-        <button class="buy" onclick="buyPhone('Interlinse Aero Z5','₹44,999')">Buy Now</button>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Luma+Pro+12" alt="Luma Pro 12">
-        <h3>Interlinse Luma Pro 12</h3>
-        <p>₹69,999</p>
-        <button class="buy" onclick="buyPhone('Interlinse Luma Pro 12','₹69,999')">Buy Now</button>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Vortex+Edge" alt="Vortex Edge">
-        <h3>Interlinse Vortex Edge</h3>
-        <p>₹39,999</p>
-        <button class="buy" onclick="buyPhone('Interlinse Vortex Edge','₹39,999')">Buy Now</button>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Prism+Ultra" alt="Prism Ultra">
-        <h3>Interlinse Prism Ultra</h3>
-        <p>₹79,999</p>
-        <button class="buy" onclick="buyPhone('Interlinse Prism Ultra','₹79,999')">Buy Now</button>
+        <button class="buy" onclick="showForm('Interlinse Aero Z5','₹44,999')">Buy Now</button>
       </div>
     </div>
   </div>
 
-  <!-- Product Confirmation -->
+  <!-- Laptops -->
+  <div id="laptops" class="screen">
+    <h2>Laptops</h2>
+    <div class="products">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=LumaBook+15" alt="LumaBook 15">
+        <h3>Interlinse LumaBook 15</h3>
+        <p>₹1,19,999</p>
+        <button class="buy" onclick="showForm('Interlinse LumaBook 15','₹1,19,999')">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=VortexBook+Pro" alt="VortexBook Pro">
+        <h3>Interlinse VortexBook Pro</h3>
+        <p>₹1,49,999</p>
+        <button class="buy" onclick="showForm('Interlinse VortexBook Pro','₹1,49,999')">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- iPads -->
+  <div id="ipads" class="screen">
+    <h2>iPads</h2>
+    <div class="products">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=LumaPad+Air" alt="LumaPad Air">
+        <h3>Interlinse LumaPad Air</h3>
+        <p>₹49,999</p>
+        <button class="buy" onclick="showForm('Interlinse LumaPad Air','₹49,999')">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=PrismPad+Ultra" alt="PrismPad Ultra">
+        <h3>Interlinse PrismPad Ultra</h3>
+        <p>₹79,999</p>
+        <button class="buy" onclick="showForm('Interlinse PrismPad Ultra','₹79,999')">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Form -->
+  <div id="orderForm" class="screen">
+    <h2>Enter Your Details</h2>
+    <div class="form-box">
+      <form onsubmit="confirmOrder(event)">
+        <label>Name:</label>
+        <input type="text" id="custName" required>
+        <label>Email:</label>
+        <input type="email" id="custEmail" required>
+        <label>Address:</label>
+        <input type="text" id="custAddress" required>
+        <label>Payment Option:</label>
+        <select id="payment">
+          <option>Credit Card</option>
+          <option>Debit Card</option>
+          <option>UPI</option>
+          <option>Net Banking</option>
+        </select>
+        <div id="colorOption"></div>
+        <br>
+        <button class="buy" type="submit">Confirm Purchase</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirmation -->
   <div id="confirmation" class="screen">
     <h2>Order Confirmed ✅</h2>
     <div id="orderDetails" class="result-box"></div>
     <canvas id="qrcode"></canvas>
-    <br>
+    <br><br>
     <button class="buy" onclick="goToScreen('home')">Back to Home</button>
   </div>
 
   <!-- About -->
   <div id="about" class="screen">
     <h2>About Interlinse</h2>
-    <p>At Interlinse, we believe in pushing the boundaries of technology. Our phones combine cutting-edge hardware with sleek design, built for the future.</p>
+    <p>At Interlinse, we are driven by innovation. Our mission is to design devices that not only look stunning but also redefine how technology integrates into daily life.</p>
+    <p>Every product is crafted with precision, from cutting-edge processors to world-class displays, ensuring a smooth, reliable, and elegant experience.</p>
+    <p>We believe in pushing boundaries, combining design and performance, and making technology accessible to everyone.</p>
   </div>
 
   <!-- Contact -->
   <div id="contact" class="screen">
     <h2>Contact Us</h2>
-    <p>Email: support@interlinse.com</p>
-    <p>Phone: +91 98765 43210</p>
+    <h3>General Questions</h3>
+    <div class="form-box">
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea rows="3" placeholder="Your Question"></textarea>
+      <button class="buy">Submit</button>
+    </div>
+    <h3>Customised Questions</h3>
+    <div class="form-box">
+      <textarea rows="5" placeholder="Write your customised query here"></textarea>
+      <button class="buy">Submit</button>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
   <script>
+    let currentProduct = {};
+    
     function goToScreen(id) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
     }
 
-    function buyPhone(name, price) {
+    function showForm(name, price, hasColor=false) {
+      currentProduct = {name, price};
+      let colorDiv = document.getElementById("colorOption");
+      if(hasColor){
+        colorDiv.innerHTML = `
+          <label>Choose Color:</label>
+          <select id="colorSelect">
+            <option>Black</option>
+            <option>Silver</option>
+            <option>Purple</option>
+          </select>
+        `;
+      } else {
+        colorDiv.innerHTML = "";
+      }
+      goToScreen('orderForm');
+    }
+
+    function confirmOrder(e) {
+      e.preventDefault();
+      let name = document.getElementById("custName").value;
+      let email = document.getElementById("custEmail").value;
+      let address = document.getElementById("custAddress").value;
+      let payment = document.getElementById("payment").value;
+      let color = document.getElementById("colorSelect") ? document.getElementById("colorSelect").value : "Default";
+
       let details = `
-        📱 ${name}
-        💰 Price: ${price}
-        ✅ Order Confirmed
+        Customer: ${name} <br>
+        Email: ${email} <br>
+        Address: ${address} <br>
+        Payment: ${payment} <br>
+        Product: ${currentProduct.name} <br>
+        Price: ${currentProduct.price} <br>
+        Color: ${color}
       `;
-      document.getElementById("orderDetails").innerHTML = details.replace(/\n/g,"<br>");
+      document.getElementById("orderDetails").innerHTML = details;
 
       new QRious({
         element: document.getElementById('qrcode'),
