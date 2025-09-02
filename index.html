@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interlinse Electronics</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      text-align: center;
+    }
+    nav {
+      background: #f5f5f7;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #111;
+      font-size: 16px;
+    }
+    .screen {
+      display: none;
+      padding: 50px 20px;
+      min-height: 100vh;
+    }
+    .active {
+      display: block;
+      animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 28px;
+      margin: 20px 0;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.3s;
+      background: #fafafa;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 12px;
+    }
+    button.buy {
+      background: #0071e3;
+      border: none;
+      padding: 12px 20px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    button.buy:hover {
+      background: #005bb5;
+    }
+    .result-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f5f5f7;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    canvas {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button onclick="goToScreen('home')">Home</button>
+    <button onclick="goToScreen('phones')">Shop Phones</button>
+    <button onclick="goToScreen('about')">About</button>
+    <button onclick="goToScreen('contact')">Contact</button>
+  </nav>
+
+  <!-- Home -->
+  <div id="home" class="screen active">
+    <h1>Welcome to Interlinse Electronics</h1>
+    <p>Innovation meets elegance. Explore our latest smartphones crafted with precision.</p>
+    <button class="buy" onclick="goToScreen('phones')">Shop Now</button>
+  </div>
+
+  <!-- Phones -->
+  <div id="phones" class="screen">
+    <h2>Our Latest Phones</h2>
+    <div class="products">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Nova+X1" alt="Nova X1">
+        <h3>Interlinse Nova X1</h3>
+        <p>₹59,999</p>
+        <button class="buy" onclick="buyPhone('Interlinse Nova X1','₹59,999')">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Aero+Z5" alt="Aero Z5">
+        <h3>Interlinse Aero Z5</h3>
+        <p>₹44,999</p>
+        <button class="buy" onclick="buyPhone('Interlinse Aero Z5','₹44,999')">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Luma+Pro+12" alt="Luma Pro 12">
+        <h3>Interlinse Luma Pro 12</h3>
+        <p>₹69,999</p>
+        <button class="buy" onclick="buyPhone('Interlinse Luma Pro 12','₹69,999')">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Vortex+Edge" alt="Vortex Edge">
+        <h3>Interlinse Vortex Edge</h3>
+        <p>₹39,999</p>
+        <button class="buy" onclick="buyPhone('Interlinse Vortex Edge','₹39,999')">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Prism+Ultra" alt="Prism Ultra">
+        <h3>Interlinse Prism Ultra</h3>
+        <p>₹79,999</p>
+        <button class="buy" onclick="buyPhone('Interlinse Prism Ultra','₹79,999')">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Confirmation -->
+  <div id="confirmation" class="screen">
+    <h2>Order Confirmed ✅</h2>
+    <div id="orderDetails" class="result-box"></div>
+    <canvas id="qrcode"></canvas>
+    <br>
+    <button class="buy" onclick="goToScreen('home')">Back to Home</button>
+  </div>
+
+  <!-- About -->
+  <div id="about" class="screen">
+    <h2>About Interlinse</h2>
+    <p>At Interlinse, we believe in pushing the boundaries of technology. Our phones combine cutting-edge hardware with sleek design, built for the future.</p>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="screen">
+    <h2>Contact Us</h2>
+    <p>Email: support@interlinse.com</p>
+    <p>Phone: +91 98765 43210</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
+  <script>
+    function goToScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function buyPhone(name, price) {
+      let details = `
+        📱 ${name}
+        💰 Price: ${price}
+        ✅ Order Confirmed
+      `;
+      document.getElementById("orderDetails").innerHTML = details.replace(/\n/g,"<br>");
+
+      new QRious({
+        element: document.getElementById('qrcode'),
+        value: details,
+        size: 200
+      });
+
+      goToScreen('confirmation');
+    }
+  </script>
+
+</body>
+</html>
