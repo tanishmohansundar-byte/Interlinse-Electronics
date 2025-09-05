@@ -39,12 +39,50 @@
     }
     section {
       padding: 40px;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
     }
     h2 {
       color: #00d9ff;
       margin-bottom: 20px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: #1b2735;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    }
+    .product-card h3 {
+      color: #00d9ff;
+      margin-bottom: 10px;
+    }
+    .product-card p {
+      font-size: 14px;
+      color: #ddd;
+    }
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #00ffae;
+      margin: 10px 0;
+    }
+    .buy-btn {
+      background: #00d9ff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .buy-btn:hover {
+      background: #00aacc;
     }
     footer {
       background: #111;
@@ -63,6 +101,7 @@
 
   <nav>
     <a href="#home">Home</a>
+    <a href="#products">Products</a>
     <a href="#about">About Us</a>
     <a href="#blog">Blog</a>
     <a href="#privacy">Privacy Policy</a>
@@ -74,38 +113,77 @@
     <p>We are redefining the future of technology with cutting-edge electronic products and smart innovations.</p>
   </section>
 
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <!-- Phones -->
+      <div class="product-card">
+        <h3>Minus Phone X1</h3>
+        <p>6.5" AMOLED, 128GB Storage, 48MP Camera</p>
+        <div class="price">₹39,999</div>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product-card">
+        <h3>Minus Phone X1 Pro</h3>
+        <p>6.8" AMOLED, 256GB Storage, 64MP Camera</p>
+        <div class="price">₹49,999</div>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <!-- Smartwatches -->
+      <div class="product-card">
+        <h3>Minus Watch S</h3>
+        <p>Fitness tracking, AMOLED Display, Bluetooth 5.2</p>
+        <div class="price">₹9,999</div>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product-card">
+        <h3>Minus Watch Ultra</h3>
+        <p>Premium Build, GPS, Heart-rate Monitor</p>
+        <div class="price">₹14,999</div>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <!-- AirPods -->
+      <div class="product-card">
+        <h3>Minus Pods Lite</h3>
+        <p>Wireless Earbuds, 20hr Battery Life</p>
+        <div class="price">₹4,999</div>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product-card">
+        <h3>Minus Pods Pro</h3>
+        <p>Active Noise Cancellation, 30hr Battery Life</p>
+        <div class="price">₹7,999</div>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <!-- Laptops -->
+      <div class="product-card">
+        <h3>MinusBook Air</h3>
+        <p>13" Display, 8GB RAM, 256GB SSD</p>
+        <div class="price">₹59,999</div>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product-card">
+        <h3>MinusBook Pro</h3>
+        <p>15" Display, 16GB RAM, 512GB SSD</p>
+        <div class="price">₹89,999</div>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+    </div>
+  </section>
+
   <section id="about">
     <h2>About Us</h2>
-    <p>
-      Minus Electronics was founded with the vision of delivering electronics that push the limits of innovation.  
-      Our team of engineers and designers are committed to creating devices that make life easier, smarter, and more connected.  
-      <!-- Expand this into very big content by repeating paragraphs or adding company story -->
-    </p>
-    <p>
-      [Add more paragraphs here... make it very big as per your need!]
-    </p>
+    <p>[Expand this into very big content about your company]</p>
   </section>
 
   <section id="blog">
     <h2>Blog</h2>
-    <p>
-      Welcome to our blog! Here we share technology insights, product announcements, and industry trends.  
-      <!-- Add large articles here -->
-    </p>
-    <p>
-      [Insert long-form content here with headings and subheadings...]
-    </p>
+    <p>[Write long articles, product insights, and tech news here]</p>
   </section>
 
   <section id="privacy">
     <h2>Privacy Policy</h2>
-    <p>
-      Your privacy is important to us. This Privacy Policy explains how Minus Electronics collects, uses, and safeguards your information.  
-      <!-- Add very very long legal-style text here -->
-    </p>
-    <p>
-      [Expand this into multiple pages worth of content if needed...]
-    </p>
+    <p>[Insert very very big privacy policy here]</p>
   </section>
 
   <section id="contact">
