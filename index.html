@@ -1,222 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Interrect Electronics</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minus Electronics</title>
   <style>
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      background-color: #0a1a3f; /* Dark Royal Blue */
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
+      line-height: 1.6;
+    }
+    header {
+      background: black;
+      padding: 20px;
       text-align: center;
     }
-    .screen {
-      display: none;
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #00d9ff;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #111;
+      padding: 10px;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #00d9ff;
+    }
+    section {
       padding: 40px;
-      min-height: 100vh;
-      overflow-y: auto;
-    }
-    .active {
-      display: block;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      max-width: 1000px;
+      margin: auto;
     }
     h2 {
-      margin: 20px 0;
+      color: #00d9ff;
+      margin-bottom: 20px;
     }
-    button {
-      background-color: orange;
-      border: none;
-      padding: 12px 24px;
-      margin: 10px;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background-color: #ffb84d;
-    }
-    .help-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ff6600;
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 1.5rem;
-    }
-    .popup {
-      display: none;
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      background: white;
-      color: black;
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
       padding: 20px;
-      border-radius: 10px;
-      width: 250px;
-      box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <!-- Screen 1 -->
-  <div id="screen1" class="screen active">
-    <h1>Welcome to Interrect Electronics</h1>
-    <h2>What would you like to buy?</h2>
-    <button onclick="goToScreen('phones')">Phones</button>
-    <button onclick="goToScreen('laptops')">Laptops</button>
-    <button onclick="goToScreen('ipads')">iPads</button>
-    <button onclick="goToScreen('computers')">Computers</button>
-    <button onclick="goToScreen('tvs')">TVs</button>
-    <button onclick="goToScreen('earpods')">Earpods</button>
-    <button onclick="goToScreen('watches')">Watches</button>
-    <button onclick="goToScreen('fridges')">Fridges</button>
-  </div>
+  <header>
+    <h1>Minus Electronics</h1>
+    <p>Innovation at Zero Limits</p>
+  </header>
 
-  <!-- Phones -->
-  <div id="phones" class="screen">
-    <h1>Our Phones</h1>
-    <button onclick="buyProduct('Interrect Nova X Phone')">Nova X</button>
-    <button onclick="buyProduct('Interrect FlipZ Phone')">FlipZ</button>
-    <button onclick="buyProduct('Interrect Ultra Pro Phone')">Ultra Pro</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#blog">Blog</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <!-- Laptops -->
-  <div id="laptops" class="screen">
-    <h1>Our Laptops</h1>
-    <button onclick="buyProduct('Interrect Aero Laptop')">Aero</button>
-    <button onclick="buyProduct('Interrect StormBook Laptop')">StormBook</button>
-    <button onclick="buyProduct('Interrect Quantum Laptop')">Quantum</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
+  <section id="home">
+    <h2>Welcome to Minus Electronics</h2>
+    <p>We are redefining the future of technology with cutting-edge electronic products and smart innovations.</p>
+  </section>
 
-  <!-- iPads -->
-  <div id="ipads" class="screen">
-    <h1>Our iPads</h1>
-    <button onclick="buyProduct('Interrect Tab Pro')">Tab Pro</button>
-    <button onclick="buyProduct('Interrect Tab Mini')">Tab Mini</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Minus Electronics was founded with the vision of delivering electronics that push the limits of innovation.  
+      Our team of engineers and designers are committed to creating devices that make life easier, smarter, and more connected.  
+      <!-- Expand this into very big content by repeating paragraphs or adding company story -->
+    </p>
+    <p>
+      [Add more paragraphs here... make it very big as per your need!]
+    </p>
+  </section>
 
-  <!-- Computers -->
-  <div id="computers" class="screen">
-    <h1>Our Computers</h1>
-    <button onclick="buyProduct('Interrect Tower PC')">Tower PC</button>
-    <button onclick="buyProduct('Interrect All-in-One PC')">All-in-One PC</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
+  <section id="blog">
+    <h2>Blog</h2>
+    <p>
+      Welcome to our blog! Here we share technology insights, product announcements, and industry trends.  
+      <!-- Add large articles here -->
+    </p>
+    <p>
+      [Insert long-form content here with headings and subheadings...]
+    </p>
+  </section>
 
-  <!-- TVs -->
-  <div id="tvs" class="screen">
-    <h1>Our TVs</h1>
-    <button onclick="buyProduct('Interrect Vision 55" TV')">Vision 55"</button>
-    <button onclick="buyProduct('Interrect Vision 65" TV')">Vision 65"</button>
-    <button onclick="buyProduct('Interrect Flex OLED TV')">Flex OLED</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
+  <section id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>
+      Your privacy is important to us. This Privacy Policy explains how Minus Electronics collects, uses, and safeguards your information.  
+      <!-- Add very very long legal-style text here -->
+    </p>
+    <p>
+      [Expand this into multiple pages worth of content if needed...]
+    </p>
+  </section>
 
-  <!-- Earpods -->
-  <div id="earpods" class="screen">
-    <h1>Our Earpods</h1>
-    <button onclick="buyProduct('Interrect SoundPro')">SoundPro</button>
-    <button onclick="buyProduct('Interrect AirMax')">AirMax</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@minuselectronics.com</p>
+    <p>Phone: +91-XXXXXXXXXX</p>
+    <p>Address: Minus Electronics HQ, Tech Park, India</p>
+  </section>
 
-  <!-- Watches -->
-  <div id="watches" class="screen">
-    <h1>Our Watches</h1>
-    <button onclick="buyProduct('Interrect TimeX')">TimeX</button>
-    <button onclick="buyProduct('Interrect Pulse Smartwatch')">Pulse</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
-
-  <!-- Fridges -->
-  <div id="fridges" class="screen">
-    <h1>Our Fridges</h1>
-    <button onclick="buyProduct('Interrect CoolMaster')">CoolMaster</button>
-    <button onclick="buyProduct('Interrect FrostFree')">FrostFree</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
-
-  <!-- Buy Screen -->
-  <div id="buy" class="screen">
-    <h1>Complete Your Purchase</h1>
-    <p id="productName"></p>
-    <input type="text" id="custName" placeholder="Full Name"/><br/><br/>
-    <input type="text" id="custEmail" placeholder="Email"/><br/><br/>
-    <input type="text" id="custPhone" placeholder="Phone Number"/><br/><br/>
-    <input type="text" id="custAddress" placeholder="Address"/><br/><br/>
-    <button onclick="confirmPurchase()">Confirm Purchase</button>
-    <button onclick="backToHome()">Back</button>
-  </div>
-
-  <!-- Confirmation -->
-  <div id="confirm" class="screen">
-    <h1>Thank You for Buying from Interrect!</h1>
-    <p id="summary"></p>
-    <button onclick="backToHome()">Back to Home</button>
-  </div>
-
-  <!-- Help Button -->
-  <button class="help-btn" onclick="toggleHelp()">?</button>
-  <div id="helpPopup" class="popup">
-    <h3>Need Help?</h3>
-    <p>For general queries, contact support@interrect.com</p>
-    <p>For customized questions, click "Contact Us" on our website.</p>
-  </div>
-
-  <script>
-    let selectedProduct = "";
-
-    function goToScreen(screenId) {
-      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-      document.getElementById(screenId).classList.add("active");
-    }
-
-    function backToHome() {
-      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-      document.getElementById("screen1").classList.add("active");
-    }
-
-    function buyProduct(product) {
-      selectedProduct = product;
-      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-      document.getElementById("buy").classList.add("active");
-      document.getElementById("productName").innerText = "Product: " + product;
-    }
-
-    function confirmPurchase() {
-      const name = document.getElementById("custName").value;
-      const email = document.getElementById("custEmail").value;
-      const phone = document.getElementById("custPhone").value;
-      const address = document.getElementById("custAddress").value;
-      const summary = `
-        Product: ${selectedProduct} <br/>
-        Name: ${name} <br/>
-        Email: ${email} <br/>
-        Phone: ${phone} <br/>
-        Address: ${address}
-      `;
-      document.getElementById("summary").innerHTML = summary;
-      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-      document.getElementById("confirm").classList.add("active");
-    }
-
-    function toggleHelp() {
-      const popup = document.getElementById("helpPopup");
-      popup.style.display = popup.style.display === "block" ? "none" : "block";
-    }
-  </script>
+  <footer>
+    <p>&copy; 2025 Minus Electronics. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
