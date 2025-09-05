@@ -1,300 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Interlinse Electronics</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interrect Electronics</title>
   <style>
     body {
       margin: 0;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      background: #001f3f; /* Dark Blue */
-      color: #fff;
+      font-family: "Poppins", sans-serif;
+      background-color: #0a1a3f; /* Dark Royal Blue */
+      color: white;
       text-align: center;
-    }
-    nav {
-      background: #012a5e;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      font-weight: bold;
-      font-size: 18px;
-    }
-    nav button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #ff9800;
-      font-size: 18px;
     }
     .screen {
       display: none;
-      padding: 50px 20px;
+      padding: 40px;
       min-height: 100vh;
+      overflow-y: auto;
     }
     .active {
       display: block;
-      animation: fadeIn 0.6s ease;
     }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
-    h1 { font-size: 48px; margin-bottom: 20px; }
-    h2 { font-size: 32px; margin: 20px 0; }
-    p { font-size: 18px; line-height: 1.6; max-width: 800px; margin: auto; }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      max-width: 1100px;
-      margin: auto;
+    h2 {
+      margin: 20px 0;
     }
-    .card {
-      border: 1px solid #444;
-      border-radius: 16px;
-      padding: 20px;
-      transition: transform 0.3s;
-      background: #012a5e;
-    }
-    .card:hover { transform: scale(1.05); }
-    .card img {
-      max-width: 100%;
-      border-radius: 12px;
-    }
-    button.buy {
-      background: #ff9800;
+    button {
+      background-color: orange;
       border: none;
-      padding: 12px 20px;
-      color: #fff;
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 1rem;
+      font-weight: bold;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 15px;
-      font-size: 16px;
+      transition: 0.3s;
     }
-    button.buy:hover { background: #e68900; }
-    .form-box {
-      background: #012a5e;
-      padding: 25px;
-      border-radius: 12px;
-      display: inline-block;
-      text-align: left;
-      max-width: 500px;
-      margin: auto;
+    button:hover {
+      background-color: #ffb84d;
     }
-    .form-box input, .form-box select, .form-box textarea {
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
+    .help-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff6600;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
     }
-    .result-box {
-      margin-top: 20px;
+    .popup {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: white;
+      color: black;
       padding: 20px;
-      background: #012a5e;
-      border-radius: 12px;
-      display: inline-block;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
     }
-    canvas { margin-top: 15px; }
   </style>
 </head>
 <body>
-
-  <nav>
-    <button onclick="goToScreen('home')">Home</button>
+  <!-- Screen 1 -->
+  <div id="screen1" class="screen active">
+    <h1>Welcome to Interrect Electronics</h1>
+    <h2>What would you like to buy?</h2>
     <button onclick="goToScreen('phones')">Phones</button>
     <button onclick="goToScreen('laptops')">Laptops</button>
     <button onclick="goToScreen('ipads')">iPads</button>
-    <button onclick="goToScreen('about')">About</button>
-    <button onclick="goToScreen('contact')">Contact</button>
-  </nav>
-
-  <!-- Home -->
-  <div id="home" class="screen active">
-    <h1>Welcome to Interlinse Electronics</h1>
-    <p>Innovation meets elegance. Explore our latest smartphones, laptops, and tablets crafted with precision.</p>
-    <button class="buy" onclick="goToScreen('phones')">Start Shopping</button>
+    <button onclick="goToScreen('computers')">Computers</button>
+    <button onclick="goToScreen('tvs')">TVs</button>
+    <button onclick="goToScreen('earpods')">Earpods</button>
+    <button onclick="goToScreen('watches')">Watches</button>
+    <button onclick="goToScreen('fridges')">Fridges</button>
   </div>
 
   <!-- Phones -->
   <div id="phones" class="screen">
-    <h2>Latest Phones</h2>
-    <div class="products">
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Nova+X1" alt="Nova X1">
-        <h3>Interlinse Nova X1</h3>
-        <p>₹59,999</p>
-        <button class="buy" onclick="showForm('Interlinse Nova X1','₹59,999')">Buy Now</button>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=FlipX+Fold" alt="FlipX Fold">
-        <h3>Interlinse FlipX Fold</h3>
-        <p>₹99,999</p>
-        <button class="buy" onclick="showForm('Interlinse FlipX Fold','₹99,999', true)">Buy Now</button>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=Aero+Z5" alt="Aero Z5">
-        <h3>Interlinse Aero Z5</h3>
-        <p>₹44,999</p>
-        <button class="buy" onclick="showForm('Interlinse Aero Z5','₹44,999')">Buy Now</button>
-      </div>
-    </div>
+    <h1>Our Phones</h1>
+    <button onclick="buyProduct('Interrect Nova X Phone')">Nova X</button>
+    <button onclick="buyProduct('Interrect FlipZ Phone')">FlipZ</button>
+    <button onclick="buyProduct('Interrect Ultra Pro Phone')">Ultra Pro</button>
+    <button onclick="backToHome()">Back</button>
   </div>
 
   <!-- Laptops -->
   <div id="laptops" class="screen">
-    <h2>Laptops</h2>
-    <div class="products">
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=LumaBook+15" alt="LumaBook 15">
-        <h3>Interlinse LumaBook 15</h3>
-        <p>₹1,19,999</p>
-        <button class="buy" onclick="showForm('Interlinse LumaBook 15','₹1,19,999')">Buy Now</button>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=VortexBook+Pro" alt="VortexBook Pro">
-        <h3>Interlinse VortexBook Pro</h3>
-        <p>₹1,49,999</p>
-        <button class="buy" onclick="showForm('Interlinse VortexBook Pro','₹1,49,999')">Buy Now</button>
-      </div>
-    </div>
+    <h1>Our Laptops</h1>
+    <button onclick="buyProduct('Interrect Aero Laptop')">Aero</button>
+    <button onclick="buyProduct('Interrect StormBook Laptop')">StormBook</button>
+    <button onclick="buyProduct('Interrect Quantum Laptop')">Quantum</button>
+    <button onclick="backToHome()">Back</button>
   </div>
 
   <!-- iPads -->
   <div id="ipads" class="screen">
-    <h2>iPads</h2>
-    <div class="products">
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=LumaPad+Air" alt="LumaPad Air">
-        <h3>Interlinse LumaPad Air</h3>
-        <p>₹49,999</p>
-        <button class="buy" onclick="showForm('Interlinse LumaPad Air','₹49,999')">Buy Now</button>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200?text=PrismPad+Ultra" alt="PrismPad Ultra">
-        <h3>Interlinse PrismPad Ultra</h3>
-        <p>₹79,999</p>
-        <button class="buy" onclick="showForm('Interlinse PrismPad Ultra','₹79,999')">Buy Now</button>
-      </div>
-    </div>
+    <h1>Our iPads</h1>
+    <button onclick="buyProduct('Interrect Tab Pro')">Tab Pro</button>
+    <button onclick="buyProduct('Interrect Tab Mini')">Tab Mini</button>
+    <button onclick="backToHome()">Back</button>
   </div>
 
-  <!-- Order Form -->
-  <div id="orderForm" class="screen">
-    <h2>Enter Your Details</h2>
-    <div class="form-box">
-      <form onsubmit="confirmOrder(event)">
-        <label>Name:</label>
-        <input type="text" id="custName" required>
-        <label>Email:</label>
-        <input type="email" id="custEmail" required>
-        <label>Address:</label>
-        <input type="text" id="custAddress" required>
-        <label>Payment Option:</label>
-        <select id="payment">
-          <option>Credit Card</option>
-          <option>Debit Card</option>
-          <option>UPI</option>
-          <option>Net Banking</option>
-        </select>
-        <div id="colorOption"></div>
-        <br>
-        <button class="buy" type="submit">Confirm Purchase</button>
-      </form>
-    </div>
+  <!-- Computers -->
+  <div id="computers" class="screen">
+    <h1>Our Computers</h1>
+    <button onclick="buyProduct('Interrect Tower PC')">Tower PC</button>
+    <button onclick="buyProduct('Interrect All-in-One PC')">All-in-One PC</button>
+    <button onclick="backToHome()">Back</button>
+  </div>
+
+  <!-- TVs -->
+  <div id="tvs" class="screen">
+    <h1>Our TVs</h1>
+    <button onclick="buyProduct('Interrect Vision 55" TV')">Vision 55"</button>
+    <button onclick="buyProduct('Interrect Vision 65" TV')">Vision 65"</button>
+    <button onclick="buyProduct('Interrect Flex OLED TV')">Flex OLED</button>
+    <button onclick="backToHome()">Back</button>
+  </div>
+
+  <!-- Earpods -->
+  <div id="earpods" class="screen">
+    <h1>Our Earpods</h1>
+    <button onclick="buyProduct('Interrect SoundPro')">SoundPro</button>
+    <button onclick="buyProduct('Interrect AirMax')">AirMax</button>
+    <button onclick="backToHome()">Back</button>
+  </div>
+
+  <!-- Watches -->
+  <div id="watches" class="screen">
+    <h1>Our Watches</h1>
+    <button onclick="buyProduct('Interrect TimeX')">TimeX</button>
+    <button onclick="buyProduct('Interrect Pulse Smartwatch')">Pulse</button>
+    <button onclick="backToHome()">Back</button>
+  </div>
+
+  <!-- Fridges -->
+  <div id="fridges" class="screen">
+    <h1>Our Fridges</h1>
+    <button onclick="buyProduct('Interrect CoolMaster')">CoolMaster</button>
+    <button onclick="buyProduct('Interrect FrostFree')">FrostFree</button>
+    <button onclick="backToHome()">Back</button>
+  </div>
+
+  <!-- Buy Screen -->
+  <div id="buy" class="screen">
+    <h1>Complete Your Purchase</h1>
+    <p id="productName"></p>
+    <input type="text" id="custName" placeholder="Full Name"/><br/><br/>
+    <input type="text" id="custEmail" placeholder="Email"/><br/><br/>
+    <input type="text" id="custPhone" placeholder="Phone Number"/><br/><br/>
+    <input type="text" id="custAddress" placeholder="Address"/><br/><br/>
+    <button onclick="confirmPurchase()">Confirm Purchase</button>
+    <button onclick="backToHome()">Back</button>
   </div>
 
   <!-- Confirmation -->
-  <div id="confirmation" class="screen">
-    <h2>Order Confirmed ✅</h2>
-    <div id="orderDetails" class="result-box"></div>
-    <canvas id="qrcode"></canvas>
-    <br><br>
-    <button class="buy" onclick="goToScreen('home')">Back to Home</button>
+  <div id="confirm" class="screen">
+    <h1>Thank You for Buying from Interrect!</h1>
+    <p id="summary"></p>
+    <button onclick="backToHome()">Back to Home</button>
   </div>
 
-  <!-- About -->
-  <div id="about" class="screen">
-    <h2>About Interlinse</h2>
-    <p>At Interlinse, we are driven by innovation. Our mission is to design devices that not only look stunning but also redefine how technology integrates into daily life.</p>
-    <p>Every product is crafted with precision, from cutting-edge processors to world-class displays, ensuring a smooth, reliable, and elegant experience.</p>
-    <p>We believe in pushing boundaries, combining design and performance, and making technology accessible to everyone.</p>
+  <!-- Help Button -->
+  <button class="help-btn" onclick="toggleHelp()">?</button>
+  <div id="helpPopup" class="popup">
+    <h3>Need Help?</h3>
+    <p>For general queries, contact support@interrect.com</p>
+    <p>For customized questions, click "Contact Us" on our website.</p>
   </div>
 
-  <!-- Contact -->
-  <div id="contact" class="screen">
-    <h2>Contact Us</h2>
-    <h3>General Questions</h3>
-    <div class="form-box">
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Your Email">
-      <textarea rows="3" placeholder="Your Question"></textarea>
-      <button class="buy">Submit</button>
-    </div>
-    <h3>Customised Questions</h3>
-    <div class="form-box">
-      <textarea rows="5" placeholder="Write your customised query here"></textarea>
-      <button class="buy">Submit</button>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
   <script>
-    let currentProduct = {};
-    
-    function goToScreen(id) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    let selectedProduct = "";
+
+    function goToScreen(screenId) {
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.getElementById(screenId).classList.add("active");
     }
 
-    function showForm(name, price, hasColor=false) {
-      currentProduct = {name, price};
-      let colorDiv = document.getElementById("colorOption");
-      if(hasColor){
-        colorDiv.innerHTML = `
-          <label>Choose Color:</label>
-          <select id="colorSelect">
-            <option>Black</option>
-            <option>Silver</option>
-            <option>Purple</option>
-          </select>
-        `;
-      } else {
-        colorDiv.innerHTML = "";
-      }
-      goToScreen('orderForm');
+    function backToHome() {
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.getElementById("screen1").classList.add("active");
     }
 
-    function confirmOrder(e) {
-      e.preventDefault();
-      let name = document.getElementById("custName").value;
-      let email = document.getElementById("custEmail").value;
-      let address = document.getElementById("custAddress").value;
-      let payment = document.getElementById("payment").value;
-      let color = document.getElementById("colorSelect") ? document.getElementById("colorSelect").value : "Default";
+    function buyProduct(product) {
+      selectedProduct = product;
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.getElementById("buy").classList.add("active");
+      document.getElementById("productName").innerText = "Product: " + product;
+    }
 
-      let details = `
-        Customer: ${name} <br>
-        Email: ${email} <br>
-        Address: ${address} <br>
-        Payment: ${payment} <br>
-        Product: ${currentProduct.name} <br>
-        Price: ${currentProduct.price} <br>
-        Color: ${color}
+    function confirmPurchase() {
+      const name = document.getElementById("custName").value;
+      const email = document.getElementById("custEmail").value;
+      const phone = document.getElementById("custPhone").value;
+      const address = document.getElementById("custAddress").value;
+      const summary = `
+        Product: ${selectedProduct} <br/>
+        Name: ${name} <br/>
+        Email: ${email} <br/>
+        Phone: ${phone} <br/>
+        Address: ${address}
       `;
-      document.getElementById("orderDetails").innerHTML = details;
+      document.getElementById("summary").innerHTML = summary;
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.getElementById("confirm").classList.add("active");
+    }
 
-      new QRious({
-        element: document.getElementById('qrcode'),
-        value: details,
-        size: 200
-      });
-
-      goToScreen('confirmation');
+    function toggleHelp() {
+      const popup = document.getElementById("helpPopup");
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
     }
   </script>
-
 </body>
 </html>
